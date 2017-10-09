@@ -20,6 +20,11 @@ from CosoApp import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'COSO', views.COSOViewSet)
+router.register(r'Componente', views.ComponenteViewSet)
+router.register(r'Principio', views.PrincipioViewSet)
+router.register(r'Enfoque', views.EnfoqueViewSet)
+router.register(r'Enunciados', views.EnunciadosViewSet)
 
 
 urlpatterns = [

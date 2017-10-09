@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from CosoApp.models import COSO, Componente
+from CosoApp.models import COSO, Componente, Principio, Enfoque, Enunciados
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -36,5 +36,5 @@ class EnfoqueSerializer(serializers.HyperlinkedModelSerializer):
 
 class EnunciadosSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Enfoque
+        model = Enunciados
         fields = '__all__'
