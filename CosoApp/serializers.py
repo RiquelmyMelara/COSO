@@ -17,12 +17,16 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class COSOSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = COSO
-        fields = '__all__'
+        fields = 'nombreCoso','id'
 
 class ComponenteSerializer(serializers.HyperlinkedModelSerializer):
+    COSO = serializers.SlugRelatedField(
+        slug_field='id',
+        queryset= COSO.objects.all())
+
     class Meta:
         model = Componente
-        fields = '__all__'
+        fields = 'nombre', 'peso', 'COSO'
 
 class PrincipioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

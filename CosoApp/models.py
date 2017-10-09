@@ -14,15 +14,15 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
         Token.objects.create(user=instance)
 
 class COSO(models.Model):
-    nombre = models.CharField(max_length=100)
+    nombreCoso = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre
+        return self.nombreCoso
 
 class Componente(models.Model):
     nombre = models.CharField(max_length=100)
     peso = models.IntegerField(null=False)
-    coso = models.ForeignKey(COSO)
+    COSO = models.ForeignKey(COSO)
 
     def __str__(self):
         return self.nombre

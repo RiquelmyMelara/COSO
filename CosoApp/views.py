@@ -23,9 +23,31 @@ class COSOViewSet(viewsets.ModelViewSet):
     queryset = COSO.objects.all()
     serializer_class = COSOSerializer
 
+    def get_queryset(self):
+        """ allow rest api to filter by submissions """
+        queryset = COSO.objects.all()
+        nombreCoso = self.request.query_params.get('name', None)
+
+        if nombreCoso is not None:
+            queryset = queryset.filter(nombreCoso=nombreCoso)
+
+        return queryset
+
 class ComponenteViewSet(viewsets.ModelViewSet):
     queryset = Componente.objects.all()
-    serializer_class = COSOSerializer
+    serializer_class = ComponenteSerializer
+
+    def get_queryset(self):
+        """ allow rest api to filter by submissions """
+        queryset = Componente.objects.all()
+        COSO = self.request.query_params.get('COSO', None)
+        nombre = self.request.query_params.get('name', None)
+        if COSO is not None:
+            queryset = queryset.filter(COSO=COSO)
+        if nombre is not None:
+            queryset = queryset.filter(nombre=nombre)
+
+        return queryset
 
 class PrincipioViewSet(viewsets.ModelViewSet):
     queryset = Principio.objects.all()
