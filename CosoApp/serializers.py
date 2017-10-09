@@ -18,3 +18,23 @@ class COSOSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = COSO
         fields = '__all__'
+
+class ComponenteSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Componente
+        fields = '__all__'
+
+class PrincipioSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Principio
+        fields = '__all__'
+
+class EnfoqueSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Enfoque
+        fields = '__all__'
+
+class EnunciadosSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Enfoque
+        fields = '__all__'
