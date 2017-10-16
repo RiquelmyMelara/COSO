@@ -1,8 +1,21 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from CosoApp.models import COSO, Componente, Principio, Enfoque, Enunciados, Enunciados
 from CosoApp.serializers import UserSerializer, GroupSerializer, COSOSerializer, ComponenteSerializer, PrincipioSerializer, EnfoqueSerializer, EnunciadosSerializer
 
+
+class CustomGet(APIView):
+  """
+  A custom endpoint for GET request.
+  """
+  def get(self, request, format=None):
+    """
+    Return a hardcoded response.
+    """
+    obj = Componente.objects.get(pk=2)
+    return Response({"Componente Id": obj.id, "peso": obj.peso, "Nombre Componente": obj.nombre})
 
 class UserViewSet(viewsets.ModelViewSet):
     """
